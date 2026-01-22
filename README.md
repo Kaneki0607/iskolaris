@@ -1,50 +1,52 @@
-# Welcome to your Expo app 👋
+# Iskolaris 🎓
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Iskolaris is a modern, mobile-first educational platform designed to streamline classroom management, assessment creation, and teacher-student communication. Built with Expo and React Native, it provides a premium experience for both educators and students.
 
-## Get started
+## 🚀 Key Features
 
-1. Install dependencies
+### For Teachers
+- **Advanced Assessment Suite**: Create interactive quizzes with Multiple Choice, Matching, Identification, Pattern, and Essay questions.
+- **AI Question Generator**: Generate assessments instantly using AI, including automatic Text-to-Speech scripts.
+- **Live Monitoring**: Track student progress and accuracy in real-time during ongoing assessments.
+- **Public Exercise Library**: Share and discover high-quality exercises categorized by subject and topic.
+- **Classroom Management**: Organize students into classes (e.g., Grade 10 - Rizal) and track their performance over time.
+- **Direct Communication**: Integrated chat system to stay connected with students and parents.
 
+### For Students (In Development)
+- **Interactive Quizzes**: Take assessments with a gamer-friendly UI, audio support, and immediate feedback.
+- **Progress Tracking**: View grades and performance history.
+
+## 🛠️ Tech Stack
+- **Framework**: [Expo](https://expo.dev) / [React Native](https://reactnative.dev)
+- **Navigation**: [Expo Router](https://docs.expo.dev/router/introduction/) (File-based routing)
+- **Icons**: [Ionicons](https://icons.expo.fyi/)
+- **State Management**: React Hooks (useState, useEffect, useLocalSearchParams)
+
+## 📦 Getting Started
+
+1. **Install dependencies**:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+2. **Start the development server**:
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+3. **View the app**:
+   - Use the **Expo Go** app on your phone.
+   - Or run on an **Android Emulator** / **iOS Simulator**.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 📁 Project Structure
+- `app/`: Expo Router directory containing the screens and layouts.
+  - `(auth)/`: Authentication flow (Login, Register).
+  - `(teacher)/`: Teacher-specific dashboard and tools.
+  - `(student)/`: Student-specific dashboard.
+- `src/`: Shared components, constants, and utilities.
+  - `components/`: UI components (Cards, Buttons, Inputs, Layouts).
+  - `constants/`: Color palettes, spacing, and typography tokens.
+- `assets/`: App icons, images, and fonts.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+Built with ❤️ by the Iskolaris Team.

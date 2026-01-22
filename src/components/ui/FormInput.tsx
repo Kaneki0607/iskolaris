@@ -1,5 +1,5 @@
 import React from 'react';
-import { KeyboardTypeOptions, StyleSheet, Text, TextInput, View, ViewStyle } from 'react-native';
+import { KeyboardTypeOptions, StyleProp, StyleSheet, Text, TextInput, View, ViewStyle } from 'react-native';
 import { Colors } from '../../constants/colors';
 import { Spacing } from '../../constants/spacing';
 import { Typography } from '../../constants/typography';
@@ -12,7 +12,7 @@ interface FormInputProps {
     secureTextEntry?: boolean;
     keyboardType?: KeyboardTypeOptions;
     error?: string;
-    containerStyle?: ViewStyle;
+    containerStyle?: StyleProp<ViewStyle>;
     autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
     multiline?: boolean;
     numberOfLines?: number;

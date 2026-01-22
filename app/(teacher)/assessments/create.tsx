@@ -108,7 +108,7 @@ export default function CreateAssessment() {
             Alert.alert(
                 isEditMode ? "Update Successful" : "Publish Successful",
                 `Assessment "${info.title}" has been ${isEditMode ? 'updated' : 'published'}.`,
-                [{ text: "OK", onPress: () => router.replace('/(teacher)/assessments') }]
+                [{ text: "OK", onPress: () => router.replace('/(teacher)/assessments' as any) }]
             );
         }
     };
@@ -171,16 +171,16 @@ export default function CreateAssessment() {
 
         if (!isExpanded) {
             return (
-                <TouchableOpacity key={q.id} style={styles.questionCollapsed} onPress={() => setEditingQuestionId(q.id)}>
-                    <View style={styles.flex}>
-                        <View style={styles.qHeaderRow}>
-                            <Text style={styles.qTypeLabel}>{q.type}</Text>
+                <TouchableOpacity key={q.id} style={styles.questionCollapsed as any} onPress={() => setEditingQuestionId(q.id)}>
+                    <View style={styles.flex as any}>
+                        <View style={styles.qHeaderRow as any}>
+                            <Text style={styles.qTypeLabel as any}>{q.type}</Text>
                             {q.audioMode === 'tts' && <Ionicons name="sparkles" size={12} color={Colors.primary} />}
                             {q.audioMode === 'record' && <Ionicons name="mic" size={12} color="#10B981" />}
                         </View>
-                        <Text style={styles.qTextPreview} numberOfLines={1}>{q.questionText || '(No question text)'}</Text>
+                        <Text style={styles.qTextPreview as any} numberOfLines={1}>{q.questionText || '(No question text)'}</Text>
                     </View>
-                    <View style={styles.qPointsBadge}><Text style={styles.qPointsText}>{q.points} pt</Text></View>
+                    <View style={styles.qPointsBadge as any}><Text style={styles.qPointsText as any}>{q.points} pt</Text></View>
                     <Ionicons name="chevron-down" size={20} color={Colors.textSecondary} />
                 </TouchableOpacity>
             );
@@ -198,7 +198,7 @@ export default function CreateAssessment() {
                 </View>
 
                 <TextInput
-                    style={styles.qInput}
+                    style={styles.qInput as any}
                     placeholder="Enter question text..."
                     value={q.questionText}
                     onChangeText={(text) => updateQuestion(q.id, { questionText: text })}
@@ -206,16 +206,16 @@ export default function CreateAssessment() {
                 />
 
                 {/* Media Button for Question */}
-                <TouchableOpacity style={styles.addMediaBtn} onPress={() => updateQuestion(q.id, { questionImage: 'https://via.placeholder.com/150' })}>
+                <TouchableOpacity style={styles.addMediaBtn as any} onPress={() => updateQuestion(q.id, { questionImage: 'https://via.placeholder.com/150' })}>
                     <Ionicons name="image-outline" size={16} color={Colors.primary} />
-                    <Text style={styles.addMediaText}>{q.questionImage ? 'Change Image' : 'Add Image to Question'}</Text>
+                    <Text style={styles.addMediaText as any}>{q.questionImage ? 'Change Image' : 'Add Image to Question'}</Text>
                 </TouchableOpacity>
-                {q.questionImage && <Image source={{ uri: q.questionImage }} style={styles.previewImg} />}
+                {q.questionImage && <Image source={{ uri: q.questionImage }} style={styles.previewImg as any} />}
 
-                <View style={styles.ptsRow}>
-                    <Text style={styles.ptsLabel}>Points:</Text>
+                <View style={styles.ptsRow as any}>
+                    <Text style={styles.ptsLabel as any}>Points:</Text>
                     <TextInput
-                        style={styles.ptsInput}
+                        style={styles.ptsInput as any}
                         value={q.points.toString()}
                         onChangeText={(text) => updateQuestion(q.id, { points: parseInt(text) || 0 })}
                         keyboardType="numeric"
@@ -223,13 +223,13 @@ export default function CreateAssessment() {
                 </View>
 
                 {/* Audio Management */}
-                <View style={styles.audioSection}>
-                    <Text style={styles.audioTitle}>Audio Content</Text>
-                    <View style={styles.audioModeRow}>
+                <View style={styles.audioSection as any}>
+                    <Text style={styles.audioTitle as any}>Audio Content</Text>
+                    <View style={styles.audioModeRow as any}>
                         {(['none', 'tts', 'record'] as const).map((mode) => (
                             <TouchableOpacity
                                 key={mode}
-                                style={[styles.audioModeBtn, q.audioMode === mode && styles.audioModeBtnActive]}
+                                style={[styles.audioModeBtn, q.audioMode === mode && styles.audioModeBtnActive] as any}
                                 onPress={() => updateQuestion(q.id, {
                                     audioMode: mode,
                                     ttsScript: mode === 'tts' ? (q.ttsScript || q.questionText) : q.ttsScript
@@ -240,7 +240,7 @@ export default function CreateAssessment() {
                                     size={14}
                                     color={q.audioMode === mode ? 'white' : Colors.textSecondary}
                                 />
-                                <Text style={[styles.audioModeText, q.audioMode === mode && styles.audioModeTextActive]}>
+                                <Text style={[styles.audioModeText, q.audioMode === mode && styles.audioModeTextActive] as any}>
                                     {mode === 'none' ? 'None' : mode === 'tts' ? 'AI TTS' : 'Voice Record'}
                                 </Text>
                             </TouchableOpacity>
@@ -248,43 +248,43 @@ export default function CreateAssessment() {
                     </View>
 
                     {q.audioMode === 'tts' && (
-                        <View style={styles.ttsContainer}>
-                            <Text style={styles.audioSubLabel}>AI Spoken Script (Independent of Question Text):</Text>
-                            <View style={styles.ttsInputContainer}>
+                        <View style={styles.ttsContainer as any}>
+                            <Text style={styles.audioSubLabel as any}>AI Spoken Script (Independent of Question Text):</Text>
+                            <View style={styles.ttsInputContainer as any}>
                                 <TextInput
-                                    style={styles.ttsInput}
+                                    style={styles.ttsInput as any}
                                     value={q.ttsScript}
                                     onChangeText={(text) => updateQuestion(q.id, { ttsScript: text })}
                                     placeholder="What should the AI say?"
                                     multiline
                                 />
                                 <TouchableOpacity
-                                    style={styles.aiWriteBtn}
+                                    style={styles.aiWriteBtn as any}
                                     onPress={() => updateQuestion(q.id, {
                                         ttsScript: `Hello class, for this ${q.type} question, I want you to focus on ${q.questionText.substring(0, 50)}...`
                                     })}
                                 >
                                     <Ionicons name="sparkles" size={14} color="white" />
-                                    <Text style={styles.aiWriteBtnText}>AI Write</Text>
+                                    <Text style={styles.aiWriteBtnText as any}>AI Write</Text>
                                 </TouchableOpacity>
                             </View>
-                            <TouchableOpacity style={styles.audioActionBtn} onPress={() => Alert.alert("TTS Regenerated", "AI voice has been regenerated with the new script.")}>
+                            <TouchableOpacity style={styles.audioActionBtn as any} onPress={() => Alert.alert("TTS Regenerated", "AI voice has been regenerated with the new script.")}>
                                 <Ionicons name="refresh" size={14} color={Colors.primary} />
-                                <Text style={styles.audioActionText}>Preview & Regenerate Audio</Text>
+                                <Text style={styles.audioActionText as any}>Preview & Regenerate Audio</Text>
                             </TouchableOpacity>
                         </View>
                     )}
 
                     {q.audioMode === 'record' && (
-                        <View style={styles.recordContainer}>
-                            <Text style={styles.audioSubLabel}>Teacher Voice Recording:</Text>
-                            <View style={styles.recordControls}>
-                                <TouchableOpacity style={styles.recordBtn} onPress={() => Alert.alert("Recording", "Teacher voice recording process started...")}>
+                        <View style={styles.recordContainer as any}>
+                            <Text style={styles.audioSubLabel as any}>Teacher Voice Recording:</Text>
+                            <View style={styles.recordControls as any}>
+                                <TouchableOpacity style={styles.recordBtn as any} onPress={() => Alert.alert("Recording", "Teacher voice recording process started...")}>
                                     <Ionicons name="radio-button-on" size={18} color="#EF4444" />
-                                    <Text style={styles.recordBtnText}>Record</Text>
+                                    <Text style={styles.recordBtnText as any}>Record</Text>
                                 </TouchableOpacity>
                                 {q.voiceUri && (
-                                    <TouchableOpacity style={styles.playBtn}>
+                                    <TouchableOpacity style={styles.playBtn as any}>
                                         <Ionicons name="play" size={16} color="white" />
                                     </TouchableOpacity>
                                 )}
@@ -331,7 +331,7 @@ export default function CreateAssessment() {
 
                 {q.type === 'Identification' && (
                     <TextInput
-                        style={styles.answerInput}
+                        style={styles.answerInput as any}
                         placeholder="Correct answer..."
                         value={q.correctAnswer}
                         onChangeText={(text) => updateQuestion(q.id, { correctAnswer: text })}
@@ -524,17 +524,17 @@ export default function CreateAssessment() {
             </View>
 
             {/* Progress Bar */}
-            <View style={styles.progressContainer}>
+            <View style={styles.progressContainer as any}>
                 {STEPS.map((step, index) => (
-                    <View key={step} style={styles.progressItem}>
-                        <View style={[styles.progressDot, index <= currentStep && styles.activeDot]}>
+                    <View key={step} style={styles.progressItem as any}>
+                        <View style={[styles.progressDot, index <= currentStep && styles.activeDot] as any}>
                             {index < currentStep ? (
                                 <Ionicons name="checkmark" size={14} color="white" />
                             ) : (
-                                <Text style={[styles.dotText, index <= currentStep && styles.activeDotText]}>{index + 1}</Text>
+                                <Text style={[styles.dotText, index <= currentStep && styles.activeDotText] as any}>{index + 1}</Text>
                             )}
                         </View>
-                        <Text style={[styles.stepLabel, index <= currentStep && styles.activeStepLabel]}>{step}</Text>
+                        <Text style={[styles.stepLabel, index <= currentStep && styles.activeStepLabel] as any}>{step}</Text>
                     </View>
                 ))}
             </View>
@@ -1095,7 +1095,7 @@ const styles = StyleSheet.create({
     },
     totalPtsVal: {
         fontSize: 28,
-        fontWeight: '950',
+        fontWeight: '900',
         color: '#FFFFFF',
     },
 
